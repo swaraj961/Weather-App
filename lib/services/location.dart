@@ -11,7 +11,7 @@ Future<void>getcurrentlocation()async{
  longitude = position.longitude;
    }
   catch (e){
-    print(e);
+    print(e);  
      
   }
 }
