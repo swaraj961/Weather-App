@@ -28,12 +28,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     longitude = loc.longitude; //using package get latt and longi
 
     NetworkHelper N1 = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apikey'); // puttedinto url
+        'https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apikey&units=metric'); // puttedinto url
     var weatherdata = await N1.getdata(); //fetching data
-Navigator.push(context, MaterialPageRoute(builder: (context){
-  return LocationScreen(weatherdata );
-}));
-  }     
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      //to push datainto location screen
+      return LocationScreen(weatherdata);
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,4 +48,3 @@ Navigator.push(context, MaterialPageRoute(builder: (context){
     );
   }
 }
-
