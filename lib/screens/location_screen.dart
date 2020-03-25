@@ -3,13 +3,22 @@ import 'package:weatherapp/utilities/constants.dart';
 
 
 class LocationScreen extends StatefulWidget {
+  LocationScreen(this.locationweather);
+  final locationweather;
   @override
+
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
   
   @override
+  @override
+  void initState() { 
+    super.initState();
+    print(widget.locationweather);
+    
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -78,3 +87,8 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
+
+// var weatherdata  = await NetworkHelper.getdata();
+// var temp = decoded['main'] ['temp']; 
+// var condition = ['weather'][0]['id'];
+// var name =  ['name'];
