@@ -27,9 +27,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
     lattitude = loc.lattitude;
     longitude = loc.longitude; //using package get latt and longi
 
-    NetworkHelper N1 = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apikey&units=metric'); // puttedinto url
-    var weatherdata = await N1.getdata(); //fetching data
+    NetworkHelper n1 = NetworkHelper(
+        'https://api.openweathermap.org/data/2.5/weather?lat=${loc.lattitude}&lon=${loc.longitude}&appid=$apikey&units=metric'); // puttedinto url
+    var weatherdata = await n1.getdata(); //fetching data
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       //to push datainto location screen
       return LocationScreen(weatherdata);
