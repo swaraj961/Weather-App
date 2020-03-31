@@ -6,9 +6,9 @@ class NetworkHelper{
   final String url;
   Future getdata()async{
      http.Response response = await http.get(url);
-if(response.statusCode == 200){  //all set 
+if(response.statusCode == 200){  //all set successful got the data
 
-  String data = response.body;
+  String data = response.body; //to store  the json data 
   //temp condition and name print challenge (fetching of data)
   var decodedata = jsonDecode(data);
   return decodedata;

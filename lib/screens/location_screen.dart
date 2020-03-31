@@ -4,7 +4,7 @@ import 'package:weatherapp/services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.locationweather);
-  final locationweather;
+  final locationweather; // basiclly pass the data to a another screen widget
 
   @override
   _LocationScreenState createState() => _LocationScreenState();
@@ -36,7 +36,7 @@ temprature = temp.toInt();
       cityname = weatherdata['name'];
 
     });
-    print(temprature);
+    
   }
 
   Widget build(BuildContext context) {
@@ -60,7 +60,10 @@ temprature = temp.toInt();
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                     var weatherdata = w1.getweatherlocation();
+                     updateui(weatherdata);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
