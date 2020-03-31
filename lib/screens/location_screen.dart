@@ -5,18 +5,18 @@ import 'package:weatherapp/services/weather.dart';
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.locationweather);
   final locationweather;
- 
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-int temprature;
- String weathericon;
+  int temprature;
+  String weathericon;
   String cityname;
   String weathermsg;
 
-   WeatherModel w1 = WeatherModel(); 
+  WeatherModel w1 = WeatherModel();
 
   @override
   @override
@@ -27,18 +27,16 @@ int temprature;
 
   void updateui(var weatherdata) {
     setState(() {
-temprature = weatherdata['main']['temp']; //local var 
-//temprature = temp.toInt();
-
- weathermsg = w1.getMessage(temprature);
-  var condition = weatherdata['weather'][0]['id'];
-  weathericon =  w1.getWeatherIcon(condition);
-    cityname = weatherdata['name'];
-
+  double temp = weatherdata['main']['temp'];
+   //local var
+temprature = temp.toInt();
+     weathermsg = w1.getMessage(temprature);
+      var condition = weatherdata['weather'][0]['id'];
+      weathericon = w1.getWeatherIcon(condition);
+      cityname = weatherdata['name'];
 
     });
- 
- 
+    print(temprature);
   }
 
   Widget build(BuildContext context) {
@@ -82,7 +80,7 @@ temprature = weatherdata['main']['temp']; //local var
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '$temprature°',
+                      '$temprature℃',
                       style: kTempTextStyle,
                     ),
                     Text(
