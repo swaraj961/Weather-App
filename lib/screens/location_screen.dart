@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/screens/city_screen.dart';
 import 'package:weatherapp/utilities/constants.dart';
 import 'package:weatherapp/services/weather.dart';
 
@@ -27,9 +28,9 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateui(var weatherdata) {
     setState(() {
-  double temp = weatherdata['main']['temp'];
+temprature = weatherdata['main']['temp'];
    //local var
-temprature = temp.toInt();
+// temprature = temp.toInt();
      weathermsg = w1.getMessage(temprature);
       var condition = weatherdata['weather'][0]['id'];
       weathericon = w1.getWeatherIcon(condition);
@@ -70,7 +71,12 @@ temprature = temp.toInt();
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      var typedcityname =  await Navigator.push(context,MaterialPageRoute(builder: (context){
+                        return CityScreen();
+                      }));
+                      print(typedcityname);
+                    },
                     child: Icon(
                       Icons.location_city,
                       size: 50.0,
