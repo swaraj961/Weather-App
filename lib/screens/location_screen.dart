@@ -5,41 +5,48 @@ import 'package:weatherapp/services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.locationweather);
-  final locationweather; // basiclly pass the data to a another screen widget
+  final locationweather; // basiclly pass the data to a another screen widget  local to state 
 
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  int temprature;
+  
+  int  temprature;
   String weathericon;
   String cityname;
   String weathermsg;
 
   WeatherModel w1 = WeatherModel();
 
-  @override
+  
   @override
   void initState() {
     super.initState();
     updateui(widget.locationweather);
   }
 
-  void updateui(var weatherdata) {
-    setState(() {
-temprature = weatherdata['main']['temp'];
-   //local var
-// temprature = temp.toInt();
-     weathermsg = w1.getMessage(temprature);
+  void updateui( var weatherdata) {
+ setState(() {
+      if (weatherdata == null) {
+        temprature = 0;
+        weathericon = 'Error';
+        weathermsg = 'cant fetch data';
+        cityname = '';
+        return;
+      }
+double temp = weatherdata['main']['temp'];
+
+    temprature = temp.toInt();
       var condition = weatherdata['weather'][0]['id'];
       weathericon = w1.getWeatherIcon(condition);
+      weathermsg = w1.getMessage(temprature);
       cityname = weatherdata['name'];
-
     });
     
   }
-
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -75,7 +82,10 @@ temprature = weatherdata['main']['temp'];
                       var typedcityname =  await Navigator.push(context,MaterialPageRoute(builder: (context){
                         return CityScreen();
                       }));
-                      print(typedcityname);
+                    if(cityname != null) {
+var weatherdata = await w1.getcityname(typedcityname);
+updateui(weatherdata);
+                    }
                     },
                     child: Icon(
                       Icons.location_city,
