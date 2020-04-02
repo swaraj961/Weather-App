@@ -27,7 +27,7 @@ class _LocationScreenState extends State<LocationScreen> {
     updateui(widget.locationweather);
   }
 
-  void updateui( var weatherdata) {
+  updateui( var weatherdata) {
  setState(() {
       if (weatherdata == null) {
         temprature = 0;
@@ -68,8 +68,8 @@ var temp =  weatherdata['main']['temp'];
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {
-                     var weatherdata = w1.getweatherlocation();
+                    onPressed: () async{
+                     var weatherdata = await w1.getweatherlocation();
                      updateui(weatherdata);
                     },
                     child: Icon(
