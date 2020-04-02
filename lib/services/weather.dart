@@ -1,3 +1,4 @@
+
 import 'package:weatherapp/services/location.dart';
 import 'package:weatherapp/services/networking.dart';
 const apikey = '54668cdcac911bf5adbe9d3714990753';
@@ -55,4 +56,5 @@ Future<dynamic> getweatherlocation() async{
       return 'Bring a 🧥 just in case';
     }
   }
+
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weatherapp/screens/city_screen.dart';
 import 'package:weatherapp/utilities/constants.dart';
 import 'package:weatherapp/services/weather.dart';
-
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.locationweather);
   final locationweather; // basiclly pass the data to a another screen widget  local to state 
@@ -30,10 +29,14 @@ class _LocationScreenState extends State<LocationScreen> {
   updateui( var weatherdata) {
  setState(() {
       if (weatherdata == null) {
-        temprature = 0;
-        weathericon = 'Error';
-        weathermsg = 'cant fetch data';
-        cityname = '';
+        // temprature = 0;
+        // weathericon ='Error';
+        // weathermsg = "Can't fetch data";
+        // cityname = '';
+       
+
+
+  
         return;
       }
 var temp =  weatherdata['main']['temp'];
@@ -52,7 +55,7 @@ var temp =  weatherdata['main']['temp'];
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.jpg'),
+            image: AssetImage('images/weatherbg.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
@@ -99,7 +102,7 @@ updateui(weatherdata);
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '$temprature℃',
+                       '\t$temprature℃',
                       style: kTempTextStyle,
                     ),
                     Text(
@@ -112,7 +115,7 @@ updateui(weatherdata);
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "$weathermsg time in  $cityname",
+                  "\t$weathermsg time in $cityname",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
