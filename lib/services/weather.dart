@@ -1,6 +1,7 @@
 
 import 'package:weatherapp/services/location.dart';
 import 'package:weatherapp/services/networking.dart';
+
 const apikey = '54668cdcac911bf5adbe9d3714990753';
 const openweatherAPI = 'https://api.openweathermap.org/data/2.5/weather';
  class WeatherModel {
@@ -22,6 +23,7 @@ Future<dynamic> getweatherlocation() async{
     var weatherdata = await n1.getdata(); 
     return weatherdata;
 }
+
 
  
 

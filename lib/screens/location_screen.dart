@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weatherapp/screens/city_screen.dart';
 import 'package:weatherapp/utilities/constants.dart';
 import 'package:weatherapp/services/weather.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.locationweather);
   final locationweather; // basiclly pass the data to a another screen widget  local to state 
@@ -34,8 +35,23 @@ class _LocationScreenState extends State<LocationScreen> {
         // weathermsg = "Can't fetch data";
         // cityname = '';
        
-
-
+  Alert(
+      context: context,
+      type: AlertType.error,
+      title: "ERROR",
+      desc: "Unable To Fetch Data",
+      buttons: [
+        DialogButton(
+         
+          child: Text(
+            "Retry",
+            style: TextStyle(color: Colors.white, fontSize: 20,fontWeight:FontWeight.bold ),
+          ),
+          onPressed: () => Navigator.pop(context),
+          width: 120,
+        )
+      ],
+    ).show();
   
         return;
       }
@@ -98,12 +114,18 @@ updateui(weatherdata);
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 15.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: Row(
                   children: <Widget>[
+                    SizedBox(
+width: 20.0,
+                    ),
                     Text(
                        '\t$temprature℃',
                       style: kTempTextStyle,
+                    ),
+                    SizedBox(
+                     width: 10.0, 
                     ),
                     Text(
                       weathericon,
@@ -113,7 +135,7 @@ updateui(weatherdata);
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 15.0),
+                padding: EdgeInsets.only(right: 80.0 ,bottom: 15,left: 5),
                 child: Text(
                   "\t$weathermsg time in $cityname",
                   textAlign: TextAlign.right,
